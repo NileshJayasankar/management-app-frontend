@@ -35,13 +35,13 @@ const AppRoutes = () => {
             </Route>
           </Route>
 
-          <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+          <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
             <Route element={<AppLayout />}>
               <Route path="/users/create" element={<CreateUser />} />
             </Route>
           </Route>
 
-          <Route element={<ProtectedRoute allowedRoles={['admin', 'manager']} />}>
+          <Route element={<ProtectedRoute allowedRoles={['ADMIN', 'manager']} />}>
             <Route element={<AppLayout />}>
               <Route path="/projects/create" element={<CreateProject />} />
               <Route path="/allocation" element={<ProjectAllocation />} />

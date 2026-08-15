@@ -59,9 +59,9 @@ const Sidebar = () => {
   const links = [
     { to: '/', label: 'Dashboard', icon: 'dashboard', end: true },
     { to: '/tasks/my', label: 'Tasks', icon: 'tasks' },
-    { to: '/projects/create', label: 'Projects', icon: 'projects', roles: ['admin', 'manager'] },
-    { to: '/allocation', label: 'Allocate', icon: 'allocation', roles: ['admin', 'manager'] },
-    { to: '/users/create', label: 'Users', icon: 'users', roles: ['admin'] },
+    { to: '/projects/create', label: 'Projects', icon: 'projects', roles: ['ADMIN'] },
+    { to: '/allocation', label: 'Allocate', icon: 'allocation', roles: ['ADMIN',] },
+    { to: '/users/create', label: 'Users', icon: 'users', roles: ['ADMIN'] },
     { to: '/leave/apply', label: 'Leave', icon: 'leave' },
     { to: '/permission/apply', label: 'Permit', icon: 'permission' },
   ];

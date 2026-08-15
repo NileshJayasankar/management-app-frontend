@@ -29,6 +29,10 @@ export const AuthProvider = ({ children }) => {
 
     if (token) localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(loggedInUser));
+    sessionStorage.setItem('email',JSON.stringify(loggedInUser.email));
+    sessionStorage.setItem('role',JSON.stringify(loggedInUser.role));
+    sessionStorage.setItem('id',JSON.stringify(loggedInUser.id));
+    sessionStorage.setItem('designation',JSON.stringify(loggedInUser.designation));
     setUser(loggedInUser);
     return data;
   };
