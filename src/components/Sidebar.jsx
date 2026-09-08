@@ -55,16 +55,45 @@ const icons = {
 const Sidebar = () => {
   const { user } = useAuth();
   const role = user?.role;
+  const designation = user?.designation;
+
+  // const links = [
+  //   { to: '/', label: 'Dashboard', icon: 'dashboard', end: true },
+  //   { to: '/tasks/my', label: 'Tasks', icon: 'tasks' },
+  //   { to: '/projects/create', label: 'Projects', icon: 'projects', roles: ['ADMIN'] },
+  //   { to: '/allocation', label: 'Allocate', icon: 'allocation', roles: ['ADMIN',] },
+  //   { to: '/users/create', label: 'Users', icon: 'users', roles: ['ADMIN'] },
+  //   { to: '/leave/apply', label: 'Leave', icon: 'leave' },
+  //   { to: '/permission/apply', label: 'Permit', icon: 'permission' },
+  // ];
 
   const links = [
-    { to: '/', label: 'Dashboard', icon: 'dashboard', end: true },
-    { to: '/tasks/my', label: 'Tasks', icon: 'tasks' },
-    { to: '/projects/create', label: 'Projects', icon: 'projects', roles: ['ADMIN'] },
-    { to: '/allocation', label: 'Allocate', icon: 'allocation', roles: ['ADMIN',] },
-    { to: '/users/create', label: 'Users', icon: 'users', roles: ['ADMIN'] },
-    { to: '/leave/apply', label: 'Leave', icon: 'leave' },
-    { to: '/permission/apply', label: 'Permit', icon: 'permission' },
-  ];
+    {
+        to: "/",
+        label: "Dashboard",
+        icon: "dashboard",
+        end: true,
+        access: () => role === "ADMIN" || role === "EMPLOYEE",
+    },
+    { to: "/tasks", label: "Tasks", icon: "tasks", access: () => role === "EMPLOYEE" },
+    { to: "/projects/create", label: "Projects", icon: "projects", access: () => role === "ADMIN" },
+    { to: "/allocation", label: "Allocate", icon: "allocation", access: () => role === "ADMIN" },
+    { to: "/users/create", label: "Users", icon: "users", access: () => role === "ADMIN" },
+    {
+        to: "/approvals",
+        label: "Approvals",
+        icon: "approval",
+        access: () => role === "EMPLOYEE" && designation === "PROJECT_MANAGER",
+    },
+    { to: "/leave/apply", label: "Leave", icon: "leave", access: () => role === "ADMIN" || role === "EMPLOYEE" },
+    {
+        to: "/permission/apply",
+        label: "Permit",
+        icon: "permission",
+        access: () => role === "ADMIN" || role === "EMPLOYEE",
+    },
+];
+
 
   const visibleLinks = links.filter(
     (link) => !link.roles || (role && link.roles.includes(role))

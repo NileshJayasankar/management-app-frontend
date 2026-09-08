@@ -2,17 +2,17 @@ import api from './api';
 
 const allocationService = {
   getAllocations: async () => {
-    const { data } = await api.get('/allocations');
+    const { data } = await api.get('api/projectallocation');
     return data;
   },
 
   allocateUser: async (allocationData) => {
-    const { data } = await api.post('/allocations', allocationData);
+    const { data } = await api.post('api/projectallocation', allocationData);
     return data;
   },
 
   removeAllocation: async (id) => {
-    const { data } = await api.delete(`/allocations/${id}`);
+    const { data } = await api.delete(`api/projectallocation${id}`);
     return data;
   },
 
